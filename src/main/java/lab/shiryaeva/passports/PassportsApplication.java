@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PassportsApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(PassportsApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(PassportsApplication.class, args);
+	}
 
 }

@@ -6,15 +6,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Getter
 @Setter
-@Table(name = "passport", schema = "public")
+@Table(name = "passport")
 @Entity
 public class Passport {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -23,7 +22,7 @@ public class Passport {
     private Integer serialNumber;
 
     @JsonProperty("number")
-    @Column(name = "number", nullable = false, unique = true)
+    @Column(name = "number", nullable = false)
     private Integer number;
 
     @JsonProperty("issueDate")
@@ -31,9 +30,8 @@ public class Passport {
     private Date issueDate;
 
     @JsonProperty("expirationDate")
-    @Temporal(TemporalType.DATE)
-    @Column(name = "expiration_date", nullable = false)
-    private java.util.Date expirationDate;
+    @Column(name = "expiration_date")
+    private Date expirationDate;
 
     @JsonProperty("active")
     @Column(name = "active", nullable = false)
@@ -45,12 +43,7 @@ public class Passport {
     private PassportType passportType;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
-
-    @Override
-    public String toString() {
-        return id + " " + serialNumber + " " + number + " " + person.getLastName();
-    }
 }

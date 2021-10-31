@@ -6,16 +6,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Getter
 @Setter
-@Table(name = "person", schema = "public")
+@Table(name = "person")
 @Entity
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -32,12 +31,7 @@ public class Person {
     private Date birthDate;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "person", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE, CascadeType.DETACH}, orphanRemoval = true)
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "person_id")
     private List<Passport> passports;
-
-    @Override
-    public String toString() {
-        return id + " " + firstName + " " + lastName + " " + birthDate;
-    }
-
 }
