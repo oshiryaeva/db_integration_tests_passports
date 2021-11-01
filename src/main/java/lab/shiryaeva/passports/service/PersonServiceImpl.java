@@ -28,5 +28,4 @@ public class PersonServiceImpl implements PersonService {
         return personRepository.findByPassports_SerialNumberAndPassports_Number(Integer.valueOf(serialNumber), Integer.valueOf(number));
     }
 
-
 }
