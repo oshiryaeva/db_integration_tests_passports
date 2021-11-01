@@ -7,6 +7,5 @@ CREATE TABLE IF NOT EXISTS passport (
   active BOOLEAN NOT NULL,
   passport_type INTEGER NOT NULL,
   person_id BIGINT,
-  person_id BIGINT,
   CONSTRAINT pk_passport PRIMARY KEY (id)
 );

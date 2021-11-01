@@ -17,8 +17,8 @@ public interface PassportService {
 
     List<Passport> getPassportsByFullName(String firstName, String lastName);
 
-    List<Passport> getPassportsByBirthYear(String birthYear);
+    List<Passport> getPassportsByBirthYear(Integer birthYear);
 
-    List<Passport> getPassportsByWhatever(@Nullable String firstName, @Nullable String lastName, @Nullable String birthDate);
+    List<Passport> getPassportsByWhatever(@Nullable String firstName, @Nullable String lastName, @Nullable Integer birthDate);
 
 }

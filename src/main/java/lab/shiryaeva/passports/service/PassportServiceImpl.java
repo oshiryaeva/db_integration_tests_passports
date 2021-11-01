@@ -35,12 +35,12 @@ public class PassportServiceImpl implements PassportService {
     }
 
     @Override
-    public List<Passport> getPassportsByBirthYear(String birthYear) {
+    public List<Passport> getPassportsByBirthYear(Integer birthYear) {
         return passportRepository.findByPerson_BirthDate(birthYear);
     }
 
     @Override
-    public List<Passport> getPassportsByWhatever(@Nullable String firstName, @Nullable String lastName, @Nullable String birthDate) {
+    public List<Passport> getPassportsByWhatever(@Nullable String firstName, @Nullable String lastName, @Nullable Integer birthDate) {
         return passportRepository.findByPerson_FirstNameOrPerson_LastNameOrPerson_BirthDateAllIgnoreCase(firstName, lastName, birthDate);
     }
 }

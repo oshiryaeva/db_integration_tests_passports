@@ -1,7 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '2.5.6'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.5.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
 }
 
 group = 'lab.shiryaeva'
@@ -9,41 +9,44 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 ext {
-	set('testcontainersVersion', "1.16.0")
+    set('testcontainersVersion', "1.16.0")
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.5.5'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.5'
-	implementation 'org.springframework.boot:spring-boot-starter-data-rest:2.5.5'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.5.5'
-	implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.5'
-	implementation 'org.springframework.boot:spring-boot-starter-web:2.5.5'
-	implementation 'org.flywaydb:flyway-core:8.0.1'
-	compileOnly 'org.projectlombok:lombok:1.18.22'
-	runtimeOnly 'org.postgresql:postgresql:42.2.24.jre7'
-	annotationProcessor 'org.projectlombok:lombok:1.18.22'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.5'
-	testImplementation 'org.testcontainers:junit-jupiter:1.16.0'
-	testImplementation 'org.testcontainers:postgresql:1.16.0'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.flywaydb:flyway-core:8.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.5.5'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.5'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest:2.5.5'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.5.5'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.5'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.5'
+    runtimeOnly 'org.postgresql:postgresql:42.2.24.jre7'
+    testImplementation 'org.flywaydb.flyway-test-extensions:flyway-spring-test:7.0.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.5'
+    testImplementation 'org.testcontainers:junit-jupiter:1.16.0'
+    testImplementation 'org.testcontainers:postgresql:1.16.0'
+    testImplementation 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.projectlombok:lombok:1.18.22'
 }
 
 dependencyManagement {
-	imports {
-		mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
-	}
+    imports {
+        mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
+    }
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

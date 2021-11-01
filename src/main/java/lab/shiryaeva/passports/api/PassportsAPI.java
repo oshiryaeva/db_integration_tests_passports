@@ -61,13 +61,13 @@ public class PassportsAPI {
     }
 
     @GetMapping(value = "/birthYear/{birthYear}", produces = "application/json")
-    public ResponseEntity<List<Passport>> getPassportsByBirthYear(@PathVariable String birthYear) {
+    public ResponseEntity<List<Passport>> getPassportsByBirthYear(@PathVariable Integer birthYear) {
         List<Passport> passports = passportService.getPassportsByBirthYear(birthYear);
         return new ResponseEntity<>(passports, HttpStatus.OK);
     }
 
     @PostMapping(value = "/{firstName}/{lastName}/{birthYear}", produces = "application/json")
-    public ResponseEntity<List<Passport>> getPassportsByWhatever(@PathVariable String firstName, @PathVariable String lastName, @PathVariable String birthYear) {
+    public ResponseEntity<List<Passport>> getPassportsByWhatever(@PathVariable String firstName, @PathVariable String lastName, @PathVariable Integer birthYear) {
         List<Passport> passports = passportService.getPassportsByWhatever(firstName, lastName, birthYear);
         return new ResponseEntity<>(passports, HttpStatus.OK);
     }
