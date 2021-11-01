@@ -21,17 +21,17 @@ public class PassportServiceImpl implements PassportService {
 
     @Override
     public List<Passport> getPassportsByLastName(String lastName) {
-        return passportRepository.findByPerson_LastNameIgnoreCase(lastName);
+        return passportRepository.findByPerson_LastNameLikeIgnoreCase(lastName);
     }
 
     @Override
     public List<Passport> getPassportsByFirstName(String firstName) {
-        return passportRepository.findByPerson_FirstNameIgnoreCase(firstName);
+        return passportRepository.findByPerson_FirstNameLikeIgnoreCase(firstName);
     }
 
     @Override
     public List<Passport> getPassportsByFullName(String firstName, String lastName) {
-        return passportRepository.findByPerson_FirstNameAndPerson_LastNameAllIgnoreCase(firstName, lastName);
+        return passportRepository.findByPerson_FirstNameLikeAndPerson_LastNameLikeAllIgnoreCase(firstName, lastName);
     }
 
     @Override
@@ -41,6 +41,6 @@ public class PassportServiceImpl implements PassportService {
 
     @Override
     public List<Passport> getPassportsByWhatever(@Nullable String firstName, @Nullable String lastName, @Nullable Integer birthDate) {
-        return passportRepository.findByPerson_FirstNameOrPerson_LastNameOrPerson_BirthDateAllIgnoreCase(firstName, lastName, birthDate);
+        return passportRepository.findByPerson_FirstNameOrPerson_LastNameOrPerson_BirthDate(firstName, lastName, birthDate);
     }
 }
