@@ -14,4 +14,7 @@ public interface PersonService {
 
     Person getPersonByPassportSerialNumber(String serialNumber, String number);
 
+    void save(Person person);
+
+    void delete(long id);
 }

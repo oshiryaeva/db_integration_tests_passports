@@ -2,6 +2,7 @@ package lab.shiryaeva.passports.repository;
 
 import lab.shiryaeva.passports.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
 

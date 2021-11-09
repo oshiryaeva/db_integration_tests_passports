@@ -1,5 +1,6 @@
-package lab.shiryaeva.passports;
+package lab.shiryaeva.passports.testcontainers;
 
+import lab.shiryaeva.passports.PassportsApplication;
 import lab.shiryaeva.passports.model.Passport;
 import lab.shiryaeva.passports.model.Person;
 import lab.shiryaeva.passports.repository.PassportRepository;
@@ -30,7 +31,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import java.util.List;
 
 @Testcontainers
-@SpringBootTest
+@SpringBootTest(classes = PassportsApplication.class)
 @FlywayTest
 @Transactional
 @AutoConfigureTestEntityManager
@@ -43,6 +44,7 @@ class DatabaseIntegrationTest {
             .withDatabaseName("passports-test")
             .withUsername("sa")
             .withPassword("sa");
+
     @Autowired
     private Flyway flyway;
     @Autowired

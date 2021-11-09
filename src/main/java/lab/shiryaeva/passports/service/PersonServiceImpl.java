@@ -28,4 +28,13 @@ public class PersonServiceImpl implements PersonService {
         return personRepository.findByPassports_SerialNumberAndPassports_Number(Integer.valueOf(serialNumber), Integer.valueOf(number));
     }
 
+    @Override
+    public void save(Person person) {
+        personRepository.save(person);
+    }
+
+    @Override
+    public void delete(long id) {
+        personRepository.deleteById(id);
+    }
 }
