@@ -3,19 +3,21 @@ package lab.shiryaeva.passports.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.Subselect;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.sql.Date;
 
 @Table(name = "view_active_passports")
 @Entity
 @Immutable
 @Getter
-@Setter
-public class Person2Passport {
+@Subselect("select * from view_active_passports")
+public class Person2Passport implements Serializable {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;

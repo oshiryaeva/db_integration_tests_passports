@@ -88,11 +88,12 @@ public class DBUnitTriggerTest {
     @Test
     @FlywayTest
     public void shouldUpdateViewAfterPersonDelete() throws Exception {
-        List<Person2Passport> viewBefore = this.person2PassportRepository.findAll();
-        assertEquals(46, viewBefore.size());
+        assertEquals(46, person2PassportRepository.count());
         personService.delete(43);
-        List<Person2Passport> viewAfter = this.person2PassportRepository.findAll();
-        assertEquals(45, viewAfter.size());
+        for (Person2Passport person2Passport : person2PassportRepository.findAll()) {
+            assertNotEquals("Bush", person2Passport.getLastName());
+        }
+        assertEquals(45, person2PassportRepository.count());
     }
 
     static class Initializer
