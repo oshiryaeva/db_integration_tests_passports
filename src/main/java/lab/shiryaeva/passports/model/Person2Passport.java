@@ -2,8 +2,10 @@ package lab.shiryaeva.passports.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Subselect;
+import org.springframework.data.jdbc.repository.query.Modifying;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,9 +16,7 @@ import java.sql.Date;
 
 @Table(name = "view_active_passports")
 @Entity
-@Immutable
 @Getter
-@Subselect("select * from view_active_passports")
 public class Person2Passport implements Serializable {
     @Id
     @Column(name = "id", nullable = false)

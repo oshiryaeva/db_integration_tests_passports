@@ -1,5 +1,6 @@
-package lab.shiryaeva.passports.model;
+package lab.shiryaeva.passports.repository;
 
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 

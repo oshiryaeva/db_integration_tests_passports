@@ -1,12 +1,10 @@
 package lab.shiryaeva.passports.dbunit;
 
-import com.github.springtestdbunit.annotation.DatabaseSetup;
-import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import lab.shiryaeva.passports.PassportsApplication;
 import lab.shiryaeva.passports.model.Passport;
 import lab.shiryaeva.passports.model.Person;
 import lab.shiryaeva.passports.model.Person2Passport;
-import lab.shiryaeva.passports.model.Person2PassportRepository;
+import lab.shiryaeva.passports.repository.Person2PassportRepository;
 import lab.shiryaeva.passports.service.PassportService;
 import lab.shiryaeva.passports.service.PersonService;
 import org.flywaydb.test.FlywayTestExecutionListener;
@@ -15,6 +13,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureTestEntityManager;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.context.ApplicationContextInitializer;
@@ -49,6 +48,8 @@ public class DBUnitTriggerTest {
     private PassportService passportService;
     @Autowired
     private Person2PassportRepository person2PassportRepository;
+    @Autowired
+    private TestEntityManager entityManager;
 
     @Container
     public static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:13")
@@ -90,6 +91,7 @@ public class DBUnitTriggerTest {
     public void shouldUpdateViewAfterPersonDelete() throws Exception {
         assertEquals(46, person2PassportRepository.count());
         personService.delete(43);
+        entityManager.flush();
         for (Person2Passport person2Passport : person2PassportRepository.findAll()) {
             assertNotEquals("Bush", person2Passport.getLastName());
         }
