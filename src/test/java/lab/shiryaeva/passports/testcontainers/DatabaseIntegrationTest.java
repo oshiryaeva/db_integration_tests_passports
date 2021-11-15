@@ -40,7 +40,7 @@ import java.util.List;
 class DatabaseIntegrationTest {
 
     @Container
-    public static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:13")
+    public static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:13")
             .withDatabaseName("passports-test")
             .withUsername("sa")
             .withPassword("sa");

@@ -1,11 +1,6 @@
 package lab.shiryaeva.passports.model;
 
 import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Immutable;
-import org.hibernate.annotations.Subselect;
-import org.springframework.data.jdbc.repository.query.Modifying;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

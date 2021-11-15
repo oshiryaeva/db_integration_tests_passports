@@ -19,5 +19,5 @@ SELECT row_number() OVER () AS id
 FROM passport pt
 JOIN person pn ON pt.person_id = pn.id
 WHERE pt.active IS TRUE
-ORDER BY pn.id
+ORDER BY id
 $BODY$;
