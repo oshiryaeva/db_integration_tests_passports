@@ -14,6 +14,3 @@ BEGIN
 	RETURN OLD;
 END;
 $BODY$;
-
-ALTER FUNCTION public.cascade_delete_trigger_func()
-    OWNER TO postgres;

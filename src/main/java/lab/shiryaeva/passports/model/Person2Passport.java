@@ -30,5 +30,4 @@ public class Person2Passport implements Serializable {
     private String lastName;
     @Column(name = "birth_date")
     private Date birthDate;
-
 }

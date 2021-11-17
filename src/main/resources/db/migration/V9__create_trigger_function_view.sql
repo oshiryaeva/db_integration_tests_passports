@@ -26,6 +26,3 @@ BEGIN
     RETURN NULL;
 END;
 $BODY$;
-
-ALTER FUNCTION public.update_view_trigger_func()
-    OWNER TO postgres;
