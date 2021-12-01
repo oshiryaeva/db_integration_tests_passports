@@ -29,12 +29,37 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void save(Person person) {
-        personRepository.save(person);
+    public Person save(Person person) {
+        return personRepository.save(person);
     }
 
     @Override
     public void delete(long id) {
         personRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Person> getPersonByLastName(String lastName) {
+        return personRepository.findByLastName(lastName);
+    }
+
+    @Override
+    public Person get(Long id) {
+        return personRepository.findById(id).orElseThrow(() -> new RuntimeException("Could not find person " + id));
+    }
+
+    @Override
+    public Person updateById(Long id, Person newPerson) {
+        return personRepository.findById(id)
+                .map(person -> {
+                    person.setFirstName(newPerson.getFirstName());
+                    person.setLastName(newPerson.getLastName());
+                    person.setBirthDate(newPerson.getBirthDate());
+                    return personRepository.save(person);
+                })
+                .orElseGet(() -> {
+                    newPerson.setId(id);
+                    return personRepository.save(newPerson);
+                });
     }
 }

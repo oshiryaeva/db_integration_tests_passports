@@ -31,7 +31,7 @@ public class Person {
     private Date birthDate;
 
     @JsonIgnore
-    @OneToMany(orphanRemoval = true)
+    @OneToMany()
     @JoinColumn(name = "person_id")
     private List<Passport> passports;
 }

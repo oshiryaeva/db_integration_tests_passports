@@ -35,19 +35,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         FlywayTestExecutionListener.class})
 public class DBUnitTriggerTest {
 
+    @Container
+    static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:13")
+            .withDatabaseName("passports-test")
+            .withUsername("postgres")
+            .withPassword("password");
     @Autowired
     private PersonService personService;
     @Autowired
     private PassportService passportService;
     @Autowired
     private Person2PassportRepository person2PassportRepository;
-
-
-    @Container
-    static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:13")
-            .withDatabaseName("passports-test")
-            .withUsername("postgres")
-            .withPassword("password");
 
     @Test
     void repositoriesNotEmpty() {

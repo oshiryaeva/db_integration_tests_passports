@@ -12,4 +12,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     List<Person> findByPassports_Number(Integer number);
 
     Person findByPassports_SerialNumberAndPassports_Number(Integer serialNumber, Integer number);
+
+    List<Person> findByLastName(String lastName);
+
 }
